@@ -1,0 +1,108 @@
+<nav class="navbar navN w3-text-blue w3-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+      </button>
+      <a class="navbar-brand" routerLink="">Garden</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a routerLink="/login" routerLinkActive="w3-black"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a routerLink="/help"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="box">
+  <form *ngIf="num!=0" class="form w3-container" #f="ngForm">
+    <div class="title w3-text-blue">
+      <h4 for="w3-label">Login</h4>
+    </div>
+    <label 
+     class="w3-label">Username</label>
+    <input 
+      type="text" 
+      class="w3-margin-bottom" 
+      placeholder="E-mail"
+      name="Emailu"
+      minlength="3"
+      [class.wrong]="wrongEmail === true"
+      [class.initial]="wrongEmail === false"
+      [(ngModel)]="emailu"
+      (change)="checkUser()"
+      #Emailu="ngModel"
+      required
+      autofocus
+      >
+      <span *ngIf="wrongEmail==true && Emailu.touched" class="w3-text-red help-block">Wrong username.</span>
+      <span *ngIf="Emailu.errors?.required && Emailu.touched" class="w3-text-red help-block">Fill this case first.</span>
+    <label class="w3-label">Password</label>
+    <input 
+      type="password"
+      minlength="6"
+      required
+      class="w3-margin-bottom"
+      placeholder="Password"
+      id="pass"
+      name="pass"
+      [(ngModel)]="password"
+      #Password="ngModel"
+      [class.wrong]="wrongMdp === true || (Password.errors?.minlength && Password.touched)"
+      [class.initial]="wrongMdp === false" 
+      >
+      <span *ngIf="Password.errors?.required && Password.touched" class="w3-text-red help-block">Fill this case first.</span>
+      <span *ngIf="wrongMdp === true" class="w3-text-red help-block">Wrong password.</span>
+      <button 
+      [disabled]="f.invalid || wrongEmail==true"
+      (click)="Login(f)" 
+      class="btn w3-blue full"
+    >
+      Se connecter
+    </button>
+  </form>
+  <form *ngIf="num==0" class="form w3-container" #f="ngForm">
+    <div class="title w3-text-blue">
+      <h4 for="w3-label">Registration</h4>
+    </div>
+    <label class="w3-label">Username</label>
+    <input 
+      type="text" 
+      class="w3-margin-bottom" 
+      placeholder="Username"
+      minlength="3"
+      name="Emailu"
+      [(ngModel)]="emailu"
+      #EmailR="ngModel"
+      [class.initial]="wrongEmail === false"
+      [class.wrong]="EmailR.errors?.required"
+      [class.wrong]="EmailR.errors?.minLenght"
+      required
+      autofocus
+      >
+      <span *ngIf="EmailR.errors?.required && EmailR.touched" class="w3-text-red help-block">Fill this case first.</span>
+    <label class="w3-label">Password</label>
+    <input 
+      type="password"
+      minlength="6"
+      required
+      class="w3-margin-bottom" 
+      placeholder="Password"
+      [class.wrong]="PassR.errors?.required && PassR.touched"
+      [class.wrong]=" PassR.errors?.minLenght && PassR.touched"  
+      [class.initial]="wrongEmail === false"
+      id="pass"
+      name="pass"
+      [(ngModel)]="password"
+      #PassR="ngModel"
+      >
+      <span *ngIf="PassR.errors?.required && PassR.touched" class="w3-text-red help-block">Fill this case first.</span>
+    <button 
+      [disabled]="f.invalid" 
+      class="btn w3-blue full"
+      (click)="Register(f)"
+    >
+      Sign in
+    </button>
+  </form>
+</div>

@@ -1,0 +1,12 @@
+.box{
+    width: 500px;
+    height: 300px;
+    border-radius: 15px;
+    text-align: center;
+    background-color: rgb(211, 211, 211);
+    box-shadow:inset 3px 3px 5px rgba(0, 0, 0, 0.5),inset -4px -4px 10px rgba(255, 255, 255, 0.61);
+    margin: auto;
+    margin-top: 100px;
+    padding-top: 10px;
+    color: grey;
+}

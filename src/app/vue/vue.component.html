@@ -1,0 +1,35 @@
+<div class="content row w3-container">
+  <div class="box-nav">
+    <form class="navbar-form search">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+        <input (change)="Construct()" [(ngModel)]="Search" name="Search" id="search" type="date"
+          class="w3-input form-control" placeholder="Recherche">
+      </div>
+    </form>
+    <a routerLink="/Menu" title="Previous" class="w3-btn btn-danger pre"><span
+        class="glyphicon glyphicon-chevron-left"></span></a>
+  </div>
+  <div class="col-sm-12 liste">
+    <div class="liste-content w3-padding w3-responsive">
+      <div class="titleE">Enter</div>
+      <div class="titleS">Exit</div>
+      <div class="margin"></div>
+      <div class="liste-tab">
+        <div class="full">
+          <div *ngFor="let item of MyListe" class="row full-width">
+            <div *ngIf="item.type==false" class="col-sm-6 col-xs-0">
+            </div>
+            <div class="col-sm-6 col-xs-12">
+              <h5 [class.w3-right-align]="item.type == false">{{item.time}}</h5>
+              <div [class.w3-blue]="item.type==true" [class.w3-red]="item.type==false" class="text w3-container">
+                {{item.Car.matrc}}
+              </div>
+            </div>
+            <div class="col-sm-6 col-xs-0">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

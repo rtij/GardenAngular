@@ -1,0 +1,62 @@
+<div class="content row w3-container">
+    <div class="box-nav">
+        <form class="navbar-form search">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                <input [(ngModel)]="search" name="Search" id="search" type="text" class="w3-input form-control"
+                    placeholder="Recherche">
+            </div>
+        </form>
+        <a routerLink="/Menu" title="Previous" class="w3-btn btn-danger pre"><span
+                class="glyphicon glyphicon-chevron-left"></span></a>
+    </div>
+    <div class="action col-sm-4 w3-container">
+        <form class="form" #f="ngForm">
+            <label class="w3-label w3-margin">Username</label>
+            <input type="text" class="form-control" placeholder="Username" name="Clientname" minlength="3"
+                [(ngModel)]="username" #UserName="ngModel" required>
+            <span *ngIf="UserName.errors?.required && UserName.touched" class="w3-text-red help-block">Fill this case
+                first.</span>
+            <label class="w3-label w3-margin">Password</label>
+            <input type="password" class="form-control" placeholder="Password" name="Pass" id="pass"
+                [(ngModel)]="password" minlength="6" #Pass="ngModel" required>
+            <span *ngIf="Pass.errors?.required && Pass.touched" class="w3-text-red help-block">Fill this case
+                first.</span>
+            <span *ngIf="Pass.errors?.minlength && Pass.touched" class="w3-text-red help-block">6 caracters minimum
+            .</span>
+            <label for="" class="w3-label w3-margin">Confirm password</label>
+            <input type="password" class="form-control" placeholder="Confirm password" name="ConfPass" id="ConfPass"
+                [(ngModel)]="confPass" #ConfPass="ngModel" required>
+            <span *ngIf="ConfPass.errors?.required && ConfPass.touched" class="w3-text-red help-block">Fill this case
+                first.</span>
+            <span *ngIf="ConfPass.value!=Pass.value && ConfPass.touched" class="w3-text-red">Wrong password</span>
+            <button [disabled]="f.invalid || ConfPass.value!=Pass.value" (click)="Action(f)"
+                class="w3-btn w3-blue w3-margin-top full">
+                {{action}}
+            </button>
+        </form>
+    </div>
+    <div class="col-sm-8 liste">
+        <div class="liste-content w3-container w3-responsive">
+            <table class="w3-table w3-hoverable w3-centered">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr @fade *ngFor="let item of Users | filter:search">
+                        <td>{{item.emailu}}</td>
+                        <td>
+                            <button (click)="OnSelect(item)" class="w3-btn btn-success"><span
+                                    class="glyphicon glyphicon-edit"></span></button>
+                            <button (click)="Delete(item)" class="w3-btn btn-danger"> <span
+                                    class="glyphicon glyphicon-trash"></span></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

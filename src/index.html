@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Me</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/Framework/Bootstrap/bootstrap 3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/Framework/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="assets/Framework/W3.css/w3.css">
+  
+</head>
+<body>
+  <app-root></app-root>
+  <script src="assets/Framework/Javascript/Jquery/jquery.js"></script>
+  <script src="assets/Framework/Bootstrap/bootstrap 3.7/js/bootstrap.min.js"></script>
+  <script>$(document).ready(function(){
+    $('.ok').click(function(){
+       $('.action1').animate({
+           opacity: '0',
+           left : '100%'
+       },1500);
+       $('.action2').animate({
+        opacity: '1',
+        left : '0'
+    },1500);
+    });
+    $('#return').click(function(){
+        $('.action1').animate({
+            opacity: '1',
+            left : '0'
+        },1500);
+        $('.action2').animate({
+         opacity: '0',
+         left : '-100%'
+        },1500);
+     });
+     
+});  </script>
+</body>
+</html>

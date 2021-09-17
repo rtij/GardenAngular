@@ -1,0 +1,104 @@
+
+.content{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 600px;
+    height: 400px;
+    border-radius: 10px;
+    margin: auto;
+    margin-bottom: 120px;
+    margin-right: 20px;
+    background-color: rgb(211, 211, 211);
+    box-shadow:inset 3px 3px 5px rgba(0, 0, 0, 0.5),inset -4px -4px 10px rgba(255, 255, 255, 0.61);
+}
+.box
+{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+}
+.list{
+    width: 100%;
+    height: 100%;
+    text-align: center;    
+}
+.list li{
+    width: 100%;
+    height: 45px;
+    border-radius: 10px;
+    box-shadow:3px 3px 5px rgba(0, 0, 0, 0.5), -4px -4px 10px rgba(255, 255, 255, 0.61);
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: transparent;
+}
+.list li a{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border-radius: 10px;
+}
+.list li a:hover{
+    background-color: transparent;
+    box-shadow: 0 0 5px rgb(0, 140, 255,0.8),0 0 15px rgb(0, 140, 255,0.6);
+}
+.act{
+    width: 33%;
+    height: 100%;
+}
+.act ul{
+    width: 100%;
+    height: 100%;
+}
+.act li{
+    width: 100%;
+    height: 150px;
+    border-radius: 50%;
+    background-color: rgb(211, 211, 211);
+    box-shadow:inset 3px 3px 5px rgba(0, 0, 0, 0.5),inset -4px -4px 10px rgba(255, 255, 255, 0.61);
+    text-align: center;
+    margin: 10px;
+}
+.act li .entrer, .act li .sortie{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: relative;
+    transition: background 2s ease;
+}
+.act li .entrer:hover {
+    color: white;
+    background:-webkit-radial-gradient(circle farthest-side at center, rgb(0, 46, 133) 0%,rgba(255, 69, 69, 0.521) 100%);
+    background:-o-radial-gradient(circle farthest-side at center,  rgb(0, 46, 133) 0%, rgba(91, 148, 255) 100%);
+    background:-moz-radial-gradient(circle farthest-side at center,   rgb(0, 46, 133) 0%,rgba(91, 148, 255) 100%);
+    background:radial-gradient(circle farthest-side at center,  rgb(0, 46, 133) 0%,rgba(91, 148, 255) 100%);    
+
+}
+
+.act li .sortie:hover {
+    color: white;
+    background:-webkit-radial-gradient(circle farthest-side at center, rgb(247, 2, 2) 0%,rgba(255, 69, 69) 100%);
+    background:-o-radial-gradient(circle farthest-side at center,  rgb(247, 2, 2) 0%, rgba(255, 69, 69) 100%);
+    background:-moz-radial-gradient(circle farthest-side at center,   rgb(247, 2, 2) 0%,rgba(255, 69, 69) 100%);
+    background:radial-gradient(circle farthest-side at center,  rgb(247, 2, 2) 0%,rgba(255, 69, 69) 100%);    
+
+}
+.act li a:focus{
+    outline: none;
+}
+.act li a::before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+    border-radius: 50%;
+   }
+.act li a span{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}

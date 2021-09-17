@@ -1,0 +1,59 @@
+<div class="content row w3-container">
+  <div class="box-nav">
+    <form class="navbar-form search">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+        <input [(ngModel)]="ClientSearch" name="ClientSearch" id="search" type="text" class="w3-input form-control" placeholder="Recherche">
+      </div>
+    </form>
+    <a routerLink="/Menu" title="Previous" class="w3-btn btn-danger pre"><span
+        class="glyphicon glyphicon-chevron-left"></span></a>
+  </div>
+  <div class="action col-sm-4 w3-container">
+    <form class="form" #f="ngForm">
+      <label class="w3-label w3-margin">Name</label>
+      <input type="text" class="form-control" placeholder="Name" name="Clientname" minlength="3"
+        [(ngModel)]="clientname" #ClientName="ngModel" required>
+      <span *ngIf="ClientName.errors?.required && ClientName.touched" class="w3-text-red help-block">Fill this case
+        first.</span>
+      <label class="w3-label w3-margin">Adress</label>
+      <input type="text" class="form-control" placeholder="Adresse" name="AdresseCl" id="AdresseCl" [(ngModel)]="adrcl"
+        minlength="5" #Adrcl="ngModel">
+      <label for="" class="w3-label w3-margin">Tel</label>
+      <input type="text" class="form-control" placeholder="Téléphone" name="Tel" id="" [(ngModel)]="tel">
+      <button [disabled]="f.invalid" (click)="Action(f)" class="w3-btn w3-blue w3-margin-top full">
+        {{action}}
+      </button>
+      <button (click)="Reset(f)" class="w3-btn w3-blue w3-margin-top full">
+        Reset
+      </button>
+    </form>
+  </div>
+  <div class="col-sm-8 liste">
+    <div class="liste-content w3-container w3-responsive">
+      <table class="w3-table w3-hoverable w3-centered">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Adress</th>
+            <th>Tel</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="w3-hover-blue" @fade *ngFor="let item of Clients | filter:ClientSearch">
+            <td>{{item.nomcl}}</td>
+            <td>{{item.adrcl}}</td>
+            <td>{{item.telcl}}</td>
+            <td>
+              <button (click)="OnSelect(item)" class="w3-btn btn-success"><span
+                  class="glyphicon glyphicon-edit"></span></button>
+              <button (click)="Delete(item)" class="w3-btn btn-danger"> <span
+                  class="glyphicon glyphicon-trash"></span></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

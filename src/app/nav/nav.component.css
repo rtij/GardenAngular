@@ -1,0 +1,11 @@
+.box{
+    max-width: 500px;
+    min-height: 300px;
+    border-radius: 15px;
+    margin: auto;
+    margin-top: 100px;
+    margin-right: 10px;
+    padding: 10px;
+    background-color: rgb(211, 211, 211);
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5), -4px -4px 10px rgba(255, 255, 255, 0.61);
+}

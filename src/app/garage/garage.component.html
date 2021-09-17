@@ -1,0 +1,105 @@
+<div class="content w3-container row">
+    <div class="box-nav">
+        <form class="navbar-form search">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                <input [(ngModel)]="CarSearch" name="CarSearch" id="search" type="text" class="w3-input form-control"
+                    placeholder="Recherche">
+            </div>
+        </form>
+        <a routerLink="/Menu" title="Previous" class="w3-btn btn-danger pre"><span
+                class="glyphicon glyphicon-chevron-left"></span></a>
+    </div>
+    <div class="action col-sm-6 w3-container">
+        <form class="form form-horizontal" #f="ngForm">
+            <div class="form-group full w3-margin-top">
+                <label class="w3-label control-label col-sm-2">Date</label>
+                <div class="col-sm-10">
+                    <input 
+                        type="date" 
+                        class="form-control w3-input" 
+                        placeholder="Date" 
+                        name="BrandC"
+                        id="BrandC" 
+                        [(ngModel)]="Date"
+                        #BrandC="ngModel"
+                        readonly
+                    >
+                </div>
+            </div>
+            <div class="form-group full w3-margin-top">
+                <label class="w3-label control-label col-sm-2">Time</label>
+                <div class="col-sm-10">
+                    <input 
+                        type="time" 
+                        class="form-control w3-input" 
+                        placeholder="Adresse" 
+                        name="Date"
+                        [(ngModel)]="time"
+                        #Time="ngModel" 
+                        id="Date"
+                        readonly
+                        
+                    >
+                </div>
+            </div>
+            <div class="full w3-container notif">
+            </div>
+            <div class="form-group full w3-margin-top">
+                <label class="w3-label control-label col-sm-2">Car</label>
+                <div class="col-sm-10">
+                    <input 
+                        list="ClientListe" 
+                        type="text" 
+                        class="form-control w3-input" 
+                        placeholder="Car"
+                        required 
+                        name="ClientN"
+                        id="ClientN"
+                        [(ngModel)]="carN"
+                        #ClientN="ngModel"
+                        (change)="Select()"
+                        [readonly]="change===true"
+                        >
+                    <datalist id="ClientListe">
+                        <option *ngFor="let item of Cars" value="{{item.matrc}}"></option>
+                    </datalist>
+                </div>
+            </div>    
+            <button (click)="Register(f)" [disabled]="f.invalid" class="w3-btn w3-blue w3-margin-top full">
+                {{action}}
+            </button>
+            <button (click)="Reset(f)" class="w3-btn w3-blue w3-margin-top full">
+                Reset
+            </button>
+        </form>
+    </div>
+    <div class="col-sm-6 liste">
+      <div class="liste-content w3-container w3-responsive">
+        <table class="w3-table w3-hoverable w3-centered">
+          <thead>
+            <tr>
+              <th>N°</th>
+              <th>Brands</th>
+              <th>Color</th>
+              <th>Client</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="w3-hover-blue" @fade *ngFor="let item of GarageCar | filter:CarSearch">
+              <td>{{item.matrc.matrc}}</td>
+              <td>{{item.matrc.nomv}}</td>
+              <td style="background-color: {{item.matrc.couleurc}};"></td>
+              <td>{{item.matrc.idclient.nomcl}}</td>
+              <td>
+                <button (click)="OnSelect(item)" class="w3-btn btn-success"><span
+                    class="glyphicon glyphicon-chevron-left"></span></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+</div>
